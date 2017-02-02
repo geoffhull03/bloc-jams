@@ -76,15 +76,19 @@ var setCurrentAlbum = function(album) {
          albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
      }
 };
+
 var findParentByClassName = function(element, classToFind) {
-	if (element) {
-		var currentElement = element.parentElement;
-		while (currentElement.className != classToFind && currentElement.className != 				null) {
-		currentElement = currentElement.parentElement;
-		}
-	}
-	return currentElement;
-};
+    if (element) {
+        var currentParent = element.parentElement;
+            if (!currentParent) {
+				return console.log ('No parent found');
+				}
+        while (currentParent.className != classToFind && currentParent.className !== null) {
+            currentParent = currentParent.parentElement;
+        }
+        return currentParent ? currentParent : 'No parent found with that class name.';
+    }
+}:
 
 var getSongItem = function(element) {
     switch (element.className) {
