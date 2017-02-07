@@ -55,23 +55,21 @@ var createSongRow = function(songNumber, songName, songLength) {
      return template;
  };
 
-var setCurrentAlbum = function(album) {
-    
-var $albumTitle = $('.album-view-title');
+     var $albumTitle = $('.album-view-title');
      var $albumArtist = $('.album-view-artist');
      var $albumReleaseInfo = $('.album-view-release-info');
      var $albumImage = $('.album-cover-art');
      var $albumSongList = $('.album-view-song-list');
+     
+var setCurrentAlbum = function(album) {
 
      $albumTitle.text(album.title);
      $albumArtist.text(album.artist);
      $albumReleaseInfo.text(album.year + ' ' + album.label);
      $albumImage.attr('src', album.albumArtUrl);
  
-     // #3
      $albumSongList.empty();
  
-     // #4
      for (var i = 0; i < album.songs.length; i++) {
          var $newRow = createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
          $albumSongList.append($newRow);
@@ -166,7 +164,7 @@ var currentlyPlayingSong = null;
      
     var albums = [albumPicasso, albumMarconi, albumRHCP];
     var index = 1;
-    albumImage.addEventListener("click", function(event) {
+    $albumImage.on("click", function(event) {
          setCurrentAlbum(albums[index]);
          index++;
         if (index == albums.length) {
