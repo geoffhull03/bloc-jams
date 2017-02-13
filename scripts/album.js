@@ -181,4 +181,3 @@ var $nextButton = $('.main-controls .next');
         }
     });
 });
- 
