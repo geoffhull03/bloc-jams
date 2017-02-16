@@ -176,7 +176,9 @@ var previousSong = function() {
 
 var togglePlayFromPlayerbar = function() {
     var $currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
-    if (currentSoundFile.isPaused()) {
+    if (!currentSoundFile) {
+       return;
+    } else if (currentSoundFile.isPaused()) {
         $currentlyPlayingCell.html(pauseButtonTemplate);
         $(this).html(playerBarPauseButton);
         currentSoundFile.play();
